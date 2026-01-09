@@ -6,6 +6,7 @@ import (
 
 	"github.com/kaiachain/kaia-load-tester/klayslave/account"
 	"github.com/kaiachain/kaia/client"
+	"github.com/kaiachain/kaia/common"
 	"github.com/myzhan/boomer"
 )
 
@@ -80,6 +81,14 @@ func RunErc20TransferTC(config *TCConfig) func() {
 		receiver := config.AccGrp.GetAccountRandomly()
 		erc20Data := account.TestContractInfos[account.ContractErc20].GenData(receiver.GetAddress(), erc20Value)
 		return from.TransferNewSmartContractExecutionTx(cli, to, nil, erc20Data)
+	}
+	return RunBaseWithContract(config, txFunc)
+}
+
+func RunFiboTC(config *TCConfig) func() {
+	txFunc := func(cli *client.Client, from *account.Account, to *account.Account) (interface{}, *big.Int, error) {
+		fiboData := account.TestContractInfos[account.ContractFibo].GenData(from.GetAddress(), common.Big0)
+		return from.TransferNewSmartContractExecutionTx(cli, to, nil, fiboData)
 	}
 	return RunBaseWithContract(config, txFunc)
 }

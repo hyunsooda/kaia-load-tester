@@ -51,6 +51,7 @@ const (
 	NewFeeDelegatedAccountUpdateTCName                   = "newFeeDelegatedAccountUpdateTC"
 	NewFeeDelegatedAccountUpdateWithRatioTCName          = "newFeeDelegatedAccountUpdateWithRatioTC"
 	TransferSignedTCName                                 = "transferSignedTx"
+	FiboTCName                                           = "fiboTCName"
 	TransferUnsignedTCName                               = "transferUnsignedTx"
 	ReceiptCheckTCName                                   = "receiptCheckTx"
 	TransferSignedWithCheckTCName                        = "transferSignedWithCheckTx"
@@ -97,8 +98,15 @@ var TcList = map[string]*ExtendedTask{
 		Name:          Erc20TransferTCName,
 		Weight:        10,
 		Init:          Init,
-		Run:           RunErc20TransferTC,
+		Run:           RunFiboTC,
 		TestContracts: []account.TestContract{account.ContractErc20},
+	},
+	FiboTCName: {
+		Name:          FiboTCName,
+		Weight:        10,
+		Init:          Init,
+		Run:           RunTransferSignedTC,
+		TestContracts: []account.TestContract{account.ContractFibo},
 	},
 	Erc20TransferWithBlockedListTCName: {
 		Name:          Erc20TransferWithBlockedListTCName,

@@ -29,6 +29,7 @@ type TestContract int
 
 const (
 	ContractErc20 TestContract = iota
+	ContractFibo
 	ContractErc721
 	ContractStorageTrie
 	ContractGeneral
@@ -84,9 +85,11 @@ func (a *AccGroup) SetAccListByName(accs []*Account, t AccList) {
 		a.accLists[t] = append(a.accLists[t], acc)
 	}
 }
+
 func (a *AccGroup) AddAccToListByName(acc *Account, t AccList) {
 	a.accLists[t] = append(a.accLists[t], acc)
 }
+
 func (a *AccGroup) CreateAccountsPerAccGrp(nUserForSignedTx int, nUserForUnsignedTx int, nUserForNewAccounts int, nUserForGaslessRevertTx int, nUserForGaslessApproveTx int, nUserForTC int, tcStrList []string, gEndpoint string) {
 	for idx, nUser := range []int{nUserForSignedTx, nUserForUnsignedTx, nUserForNewAccounts, nUserForGaslessRevertTx, nUserForGaslessApproveTx, nUserForTC} {
 		println(idx, " Account Group Preparation...")
@@ -127,7 +130,7 @@ func (a *AccGroup) GetValidAccGrp() []*Account {
 	for _, acc := range a.GetAccListByName(AccListForSignedTx) {
 		accGrp = append(accGrp, acc)
 	}
-	//if !a.cfg.InTheTcList("transferUnsignedTx") {
+	// if !a.cfg.InTheTcList("transferUnsignedTx") {
 	if !a.containsUnsignedAccGrp {
 		return accGrp
 	}
