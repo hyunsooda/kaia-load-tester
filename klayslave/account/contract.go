@@ -72,7 +72,7 @@ func PackContractCall(abiStr string, method string, args ...interface{}) []byte 
 // Contract deployer accounts
 var (
 	ERC20Deployer                 = GetAccountFromKey(0, "eb2c84d41c639178ff26a81f488c196584d678bb1390cc20a3aeb536f3969a98")
-	FiboDeployer                  = GetAccountFromKey(0, "0xa38f5bbf491d6e175050cde649f012ceeb766d8b0de976492d15ef0b0e2de1ec")
+	FiboDeployer                  = GetAccountFromKey(0, "a38f5bbf491d6e175050cde649f012ceeb766d8b0de976492d15ef0b0e2de1ec")
 	ERC721Deployer                = GetAccountFromKey(0, "45c40d95c9b7898a21e073b5bf952bcb05f2e70072e239a8bbd87bb74a53355e")
 	StorageTrieDeployer           = GetAccountFromKey(0, "3737c381633deaaa4c0bdbc64728f6ef7d381b17e1d30bbb74665839cec942b8")
 	GeneralPurposeDeployer        = GetAccountFromKey(0, "c0cd1721f60535cb7779e5db43a94390aff9ead01ee3d654abffcb0453bdc927")
