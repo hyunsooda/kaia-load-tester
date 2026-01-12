@@ -72,7 +72,6 @@ func PackContractCall(abiStr string, method string, args ...interface{}) []byte 
 // Contract deployer accounts
 var (
 	ERC20Deployer                 = GetAccountFromKey(0, "eb2c84d41c639178ff26a81f488c196584d678bb1390cc20a3aeb536f3969a98")
-	FiboDeployer                  = GetAccountFromKey(0, "a38f5bbf491d6e175050cde649f012ceeb766d8b0de976492d15ef0b0e2de1ec")
 	ERC721Deployer                = GetAccountFromKey(0, "45c40d95c9b7898a21e073b5bf952bcb05f2e70072e239a8bbd87bb74a53355e")
 	StorageTrieDeployer           = GetAccountFromKey(0, "3737c381633deaaa4c0bdbc64728f6ef7d381b17e1d30bbb74665839cec942b8")
 	GeneralPurposeDeployer        = GetAccountFromKey(0, "c0cd1721f60535cb7779e5db43a94390aff9ead01ee3d654abffcb0453bdc927")
@@ -95,6 +94,7 @@ var (
 	InternalTxMainDeployer        = GetAccountFromKey(0, "e4f5a6b7c890123456789012345678901234567890abcdef1234567890abcdef")
 	TetherLogicDeployer           = GetAccountFromKey(0, "a1b2c3d4e5f678901234567890abcdef1234567890abcdef1234567890abcd01")
 	TetherProxyDeployer           = GetAccountFromKey(0, "a1b2c3d4e5f678901234567890abcdef1234567890abcdef1234567890abcd02")
+	FiboDeployer                  = GetAccountFromKey(0, "a38f5bbf491d6e175050cde649f012ceeb766d8b0de976492d15ef0b0e2de1ec")
 )
 
 // TestContractInfo represents a test contract configuration
@@ -166,6 +166,7 @@ var TestContractInfos = []TestContractInfo{
 	createInternalTxMainContractInfo(),
 	createTetherLogicContractInfo(),
 	createTetherProxyContractInfo(),
+	createFiboContractInfo(),
 }
 
 func createERC20ContractInfo() TestContractInfo {
@@ -198,14 +199,14 @@ func createERC20ContractInfo() TestContractInfo {
 
 func createFiboContractInfo() TestContractInfo {
 	return TestContractInfo{
-		testNames:               []string{"fiboTC"},
+		testNames:               []string{"fibonacciTC"},
 		auctionTargetTxTypeList: []string{},
-		Bytecode:                common.FromHex("6080604052348015600f57600080fd5b506004361060285760003560e01c80636b370a4c14602d575b600080fd5b603c603836600460a2565b604e565b60405190815260200160405180910390f35b600081600003605f57506000919050565b81600103606e57506001919050565b600060018160025b8581116099576084838560d0565b9293508291508060928160e6565b9150506076565b50949350505050565b60006020828403121560b357600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b8082018082111560e05760e060ba565b92915050565b60006001820160f55760f560ba565b506001019056fea2646970667358221220e73cf844197ab8ec922d5bd967560e1ead1589b2b4d578f47d5cdfb45df10ebb64736f6c634300081c0033"),
+		Bytecode:                common.FromHex("6080604052348015600f57600080fd5b506101328061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80636b370a4c14602d575b600080fd5b603c603836600460a2565b604e565b60405190815260200160405180910390f35b600081600003605f57506000919050565b81600103606e57506001919050565b600060018160025b8581116099576084838560d0565b9293508291508060928160e6565b9150506076565b50949350505050565b60006020828403121560b357600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b8082018082111560e05760e060ba565b92915050565b60006001820160f55760f560ba565b506001019056fea2646970667358221220e73cf844197ab8ec922d5bd967560e1ead1589b2b4d578f47d5cdfb45df10ebb64736f6c634300081c0033"),
 		deployer:                FiboDeployer,
 		contractName:            "Fibonacci Performance Test Contract",
 		Abi:                     fiboABI,
-		GenData: func(_ common.Address, _ *big.Int) []byte {
-			return PackContractCall(fiboABI, "calculateFibonacci", big.NewInt(0x170))
+		GenData: func(_ common.Address, value *big.Int) []byte {
+			return PackContractCall(fiboABI, "calculateFibonacci", value)
 		},
 		GetBytecodeWithConstructorParam: returnBinAsIs,
 		IsDeployed:                      isDeployerNonceNotZero,

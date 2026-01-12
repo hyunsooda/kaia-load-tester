@@ -51,7 +51,7 @@ const (
 	NewFeeDelegatedAccountUpdateTCName                   = "newFeeDelegatedAccountUpdateTC"
 	NewFeeDelegatedAccountUpdateWithRatioTCName          = "newFeeDelegatedAccountUpdateWithRatioTC"
 	TransferSignedTCName                                 = "transferSignedTx"
-	FiboTCName                                           = "fibonacci"
+	FiboTCName                                           = "fibonacciTC"
 	TransferUnsignedTCName                               = "transferUnsignedTx"
 	ReceiptCheckTCName                                   = "receiptCheckTx"
 	TransferSignedWithCheckTCName                        = "transferSignedWithCheckTx"
@@ -100,13 +100,6 @@ var TcList = map[string]*ExtendedTask{
 		Init:          Init,
 		Run:           RunErc20TransferTC,
 		TestContracts: []account.TestContract{account.ContractErc20},
-	},
-	FiboTCName: {
-		Name:          FiboTCName,
-		Weight:        10,
-		Init:          Init,
-		Run:           RunFiboTC,
-		TestContracts: []account.TestContract{account.ContractFibo},
 	},
 	Erc20TransferWithBlockedListTCName: {
 		Name:          Erc20TransferWithBlockedListTCName,
@@ -450,5 +443,12 @@ var TcList = map[string]*ExtendedTask{
 		Init:          Init,
 		Run:           RunNewEthereumDynamicFeeTC,
 		TestContracts: []account.TestContract{account.ContractGeneral},
+	},
+	FiboTCName: {
+		Name:          FiboTCName,
+		Weight:        10,
+		Init:          Init,
+		Run:           RunFiboTC,
+		TestContracts: []account.TestContract{account.ContractFibo},
 	},
 }

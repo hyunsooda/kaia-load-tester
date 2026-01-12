@@ -29,7 +29,6 @@ type TestContract int
 
 const (
 	ContractErc20 TestContract = iota
-	ContractFibo
 	ContractErc721
 	ContractStorageTrie
 	ContractGeneral
@@ -50,6 +49,7 @@ const (
 	ContractInternalTxMain
 	ContractTetherLogic
 	ContractTetherProxy
+	ContractFibo
 	ContractEnd
 )
 
