@@ -98,14 +98,14 @@ var TcList = map[string]*ExtendedTask{
 		Name:          Erc20TransferTCName,
 		Weight:        10,
 		Init:          Init,
-		Run:           RunFiboTC,
+		Run:           RunErc20TransferTC,
 		TestContracts: []account.TestContract{account.ContractErc20},
 	},
 	FiboTCName: {
 		Name:          FiboTCName,
 		Weight:        10,
 		Init:          Init,
-		Run:           RunTransferSignedTC,
+		Run:           RunFiboTC,
 		TestContracts: []account.TestContract{account.ContractFibo},
 	},
 	Erc20TransferWithBlockedListTCName: {

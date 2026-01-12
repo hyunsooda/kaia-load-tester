@@ -205,7 +205,7 @@ func createFiboContractInfo() TestContractInfo {
 		contractName:            "Fibonacci Performance Test Contract",
 		Abi:                     fiboABI,
 		GenData: func(_ common.Address, _ *big.Int) []byte {
-			return PackContractCall(fiboABI, "calculateFibonacci")
+			return PackContractCall(fiboABI, "calculateFibonacci", big.NewInt(0x170))
 		},
 		GetBytecodeWithConstructorParam: returnBinAsIs,
 		IsDeployed:                      isDeployerNonceNotZero,
