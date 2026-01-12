@@ -51,7 +51,7 @@ const (
 	NewFeeDelegatedAccountUpdateTCName                   = "newFeeDelegatedAccountUpdateTC"
 	NewFeeDelegatedAccountUpdateWithRatioTCName          = "newFeeDelegatedAccountUpdateWithRatioTC"
 	TransferSignedTCName                                 = "transferSignedTx"
-	FiboTCName                                           = "fiboTCName"
+	FiboTCName                                           = "fibonacci"
 	TransferUnsignedTCName                               = "transferUnsignedTx"
 	ReceiptCheckTCName                                   = "receiptCheckTx"
 	TransferSignedWithCheckTCName                        = "transferSignedWithCheckTx"
